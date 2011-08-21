@@ -1,0 +1,69 @@
+div#header {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#575e70', startColorstr='#747E98', gradientType='0');
+}
+
+div#header h1 {
+  filter: Shadow(Color=#424242, Direction=140, Strength=3);
+}
+
+div#mainheader {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#DA6D00', startColorstr='#FF8000', gradientType='0');
+}
+
+div#main {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#000000', startColorstr='#333333', gradientType='0');
+}
+
+ul.tabs li.active {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#C4CCDD', startColorstr='#ffffff', gradientType='0');
+}
+
+fieldset {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#ededed', startColorstr='#ffffff', gradientType='0');
+}
+
+thead th {
+  filter:progid:DXImageTransform.Microsoft.Gradient
+(endColorstr='#D7D7D7', startColorstr='#F1F1F1', gradientType='0');
+}
+
+tbody tr.hover td {
+  background-color: #E2E9F5;
+}
+
+th {
+  filter: Shadow(Color=#ffffff, Direction=135, Strength=3);
+}
+
+tr.even td {
+  background-color: #f1f1f1;
+}
+
+tr.selected td {
+  background-color: #FFFFBE !important;
+}
+
+/*
+tr.selected.even td {
+  background-color: #F5F4B6 !important;
+}
+
+tr.selected.hover td {
+  background-color: #FFFFBE !important;
+}
+
+tr.selected.even.hover td {
+  background-color: #F1F0B3 !important;
+}
+*/
+
+.clearfix {
+    zoom: 1;     /* triggers hasLayout */
+    }  /* Only IE can see inside the conditional comment
+    and read this CSS rule. Don't ever use a normal HTML
+    comment inside the CC or it will close prematurely. */

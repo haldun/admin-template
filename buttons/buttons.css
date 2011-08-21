@@ -1,0 +1,454 @@
+/*
+ * Sexy Buttons
+ * 
+ * DESCRIPTION:
+ * 	Sexy, skinnable HTML/CSS buttons with icons.
+ * 
+ * PROJECT URL: 
+ * 	http://code.google.com/p/sbuttons/
+ * 
+ * AUTHOR:
+ * 	Richard Davies
+ * 	http://www.richarddavies.us
+ * 	Richard@richarddavies.us
+ * 
+ * VERSION:
+ * 	1.1
+ * 
+ * LICENSE:
+ * 	Apache License 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
+ * 	Creative Commons 3.0 Attribution  (http://creativecommons.org/licenses/by/3.0/)
+ * 
+ * CREDITS:
+ * 	Inspired by, derived from, and thanks to:
+ * 	http://www.p51labs.com/simply-buttons-v2/
+ * 	http://www.oscaralexander.com/tutorials/how-to-make-s-buttons-with-css.html
+ * 	http://www.zurb.com/article/266/super-awesome-buttons-with-css3-and-rgba
+ * 	http://www.elctech.com/snippets/make-your-buttons-look-super-awesome
+ * 
+ * USAGE:
+ * 	Simply add class="sbutton [skin]" to a <button> or <a> element and wrap the label text with double <span>s.
+ * 	You can optionally add a "silk" icon to the button text by using a third <span> with class to identify the icon.   
+ * 
+ * EXAMPLE: 
+ * 	<button id="btn1" class="sbutton" name="btn1" type="submit" value="Submit">
+ * 		<span><span><span class="ok">Submit</span></span></span>
+ * 	</button>
+ */
+
+
+/* 
+ *	Generic styles for all Sexy Buttons
+ */
+
+.sbutton {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	font: bold 13px !important;
+	text-decoration: none !important;
+	text-shadow: 1px 1px 2px #fff;
+	background: none;
+	border: none;
+	white-space: nowrap;
+	cursor: pointer;
+	user-select: none;
+	-moz-user-select: none;
+	
+	/* Fix extra width padding in IE */
+	_width: 0;
+	overflow: visible;
+}
+
+.sbutton span {
+	display: block;						/* Prevents :active from working in IE--oh well! */
+	height: 24px;
+	padding-right: 12px;
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+
+.sbutton span span {
+	padding-right: 0;
+	padding-left: 12px;
+	line-height: 24px;
+	background-position: left top;
+}
+
+.sbutton span span span {
+	padding-left: 21px;
+	background-image: none;
+	background-repeat: no-repeat;
+	background-position: left center;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _background-image: none;		Or just hide icons from the undeserving IE6 */
+	/* _padding-left: 0;					Or just hide icons from the undeserving IE6 */
+}
+
+.sbutton span span span.after {
+	padding-left: 0px;
+	padding-right: 21px;
+	background-position: right center;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _padding-right: 0;					Or just hide icons from the undeserving IE6 */
+}
+
+.sbutton[disabled],
+.sbutton[disabled]:hover,
+.sbutton[disabled]:focus,
+.sbutton[disabled]:active,
+.sbutton.disabled,
+.sbutton.disabled:hover,
+.sbutton.disabled:focus,
+.sbutton.disabled:active {
+	color: #333 !important;
+	cursor: inherit;
+	text-shadow: none; 
+	opacity: 0.33;
+}
+
+.sbutton:hover span,
+.sbutton:focus span {
+	background-position: 100% -24px;
+}
+
+.sbutton:hover span span,
+.sbutton:focus span span {
+	background-position: 0% -24px;
+}
+
+.sbutton:active span {
+	background-position: 100% -48px;
+}
+
+.sbutton:active span span {
+	background-position: 0% -48px;
+}
+
+.sbutton[disabled] span,
+.sbutton.disabled span {
+	background-position: 100% -72px;
+}
+
+.sbutton[disabled] span span,
+.sbutton.disabled span span {
+	background-position: 0% -72px;
+}
+
+.sbutton:hover span span span,
+.sbutton:focus span span span,
+.sbutton:active span span span,
+.sbutton[disabled] span span span,
+.sbutton.disabled span span span {
+	background-position: left center;
+}
+
+.sbutton:hover span span span.after,
+.sbutton:focus span span span.after,
+.sbutton:active span span span.after,
+.sbutton[disabled] span span span.after,
+.sbutton.disabled span span span.after {
+	background-position: right center;
+}
+
+.sbutton img {
+	margin-right: 5px;
+	vertical-align: text-top;
+	/* IE6 Hack */
+	_margin-top: 4px;
+	_vertical-align: text-bottom;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _display: none;		Or just hide icons from the undeserving IE6 */
+}
+
+.sbutton img.after {
+	margin-right: 0;
+	margin-left: 5px;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _margin-left: 0;		Or just hide icons from the undeserving IE6 */
+}
+
+.sbutton.smedium	{ font-size: 15px !important; }
+.sbutton.slarge	{ font-size: 18px !important; }
+
+
+/*
+ * Button Skins
+ * 
+ * .PNG background images with alpha transparency are also supplied if you'd rather use them instead of the 
+ * default .GIF images. (Just beware of IE6's lack of support.) 
+ * 
+ * Additional skins can be added below. The images/skins/ButtonTemplate.psd can be used to create new skins.
+ * Prefix the skin name with "s" to avoid any potential conflicts with other class names. 
+ */
+
+/* Silver Button Skin (the default skin) */
+
+.sbutton,
+.sbutton.ssilver {
+	color: #666 !important;
+}
+	
+.sbutton:hover,
+.sbutton:focus,
+.sbutton.ssilver:hover,
+.sbutton.ssilver:focus {
+	color: #333 !important;
+}
+	
+.sbutton span,
+.sbutton.ssilver span {
+	background-image: url(images/skins/silver/button_right.gif);
+}
+
+.sbutton span span,
+.sbutton.ssilver span span {
+	background-image: url(images/skins/silver/button_left.gif);
+}
+
+/* Orange Button Skin */
+
+.sbutton.sorange,
+.sbutton.sorange:hover,
+.sbutton.sorange:focus {
+	color: white !important;
+}
+	
+.sbutton.sorange[disabled],
+.sbutton.sorange[disabled]:hover,
+.sbutton.sorange[disabled]:active,
+.sbutton.sorange[disabled]:focus,
+.sbutton.sorange.disabled,
+.sbutton.sorange.disabled:hover,
+.sbutton.sorange.disabled:active,
+.sbutton.sorange.disabled:focus {
+	color: #333 !important;
+}
+	
+.sbutton.sorange span {
+	background-image: url(images/skins/orange/button_right.gif);
+}
+
+.sbutton.sorange span span {
+	background-image: url(images/skins/orange/button_left.gif);
+}
+
+/* Yellow Button Skin */
+
+.sbutton.syellow,
+.sbutton.syellow:hover,
+.sbutton.syellow:focus {
+	color: #994800 !important;
+}
+	
+.sbutton.syellow span {
+	background-image: url(images/skins/yellow/button_right.gif);
+}
+
+.sbutton.syellow span span {
+	background-image: url(images/skins/yellow/button_left.gif);
+}
+
+
+/* 
+ * Simple Skin Buttons
+ */
+
+.sbutton.ssimple { 
+	position: relative; 
+	padding: 5px 10px 5px;
+	font: inherit;
+	font-size: 13px !important;
+	font-style: normal !important; 
+	font-weight: bold !important; 
+	color: #fff !important;
+	line-height: 1; 
+	background-image: url(images/skins/simple/awesome-overlay-sprite.png);
+	background-repeat: repeat-x;
+	background-position: 0 0;
+	
+	/* Special effects */
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25), -2px 0 1px rgba(0,0,0,0.25); 
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5); 
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+	
+	/* IE only stuff */
+	border-bottom: 1px solid transparent\9;
+	_background-image: none;
+	
+	/* Cross browser inline block hack - http://blog.mozilla.com/webdev/2009/02/20/cross-browser-inline-block/ */
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	*display: inline !important;
+	position: relative;
+	
+	/* Force hasLayout in IE */
+	zoom: 1;
+	
+	/* Disable text selection (Firefox only)*/
+	-moz-user-select: none;
+}
+
+.sbutton.ssimple::selection {
+	background: transparent;
+}
+
+.sbutton.ssimple:hover,
+.sbutton.ssimple:focus {
+	background-position: 0 -50px; 
+	color: #fff !important;
+}
+
+.sbutton.ssimple:active { 
+	background-position: 0 -100px; 
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7); 
+	/* Unfortunately, Safari doesn't support inset yet */
+	-webkit-box-shadow: none;
+	
+	/* IE only stuff */
+	border-bottom: 0\9;
+	border-top: 1px solid #666\9;
+}
+
+.sbutton.ssimple[disabled], 
+.sbutton.ssimple.disabled { 
+	background-position: 0 -150px; 
+	color: #333 !important;
+	text-shadow: none; 
+}
+
+.sbutton.ssimple[disabled]:hover,
+.sbutton.ssimple[disabled]:focus,
+.sbutton.ssimple[disabled]:active,
+.sbutton.ssimple.disabled:hover,
+.sbutton.ssimple.disabled:focus,
+.sbutton.ssimple.disabled:active {
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5); 
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5);
+} 
+
+.sbutton.ssimple span {
+	height: auto;
+	padding-left: 24px;
+	padding-right: 0;
+	background-position: left center;
+	background-repeat: no-repeat;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _padding-left: 0;		Or just hide icons from the undeserving IE6 */
+}
+
+.sbutton.ssimple span.after {
+	padding-left: 0;
+	padding-right: 24px;
+	background-position: right center;
+	/* IE6 still requires a PNG transparency fix */ 
+	/* _padding-right: 0;		Or just hide icons from the undeserving IE6 */
+}
+
+/* Simple button colors */
+.sbutton.ssimple					{ background-color: #333; }		/* Default */
+.sbutton.ssimple.sblack		{ background-color: #333; }
+.sbutton.ssimple.sred		{ background-color: #a90118; }
+.sbutton.ssimple.sorange	{ background-color: #ff8a00; }
+.sbutton.ssimple.syellow	{ background-color: #ffb515; }
+.sbutton.ssimple.sgreen		{ background-color: #59a901; }
+.sbutton.ssimple.sblue		{ background-color: #015ea9; }
+.sbutton.ssimple.steal		{ background-color: #2daebf; }
+.sbutton.ssimple.smagenta	{ background-color: #a9014b; }
+.sbutton.ssimple.spurple	{ background-color: #9d01a9; }
+.sbutton.ssimple.sgray	{ background-color: #B3B3B3;  }
+.sbutton.ssimple.sgray {
+  font-weight: bold !important;
+  text-shadow: 1px 1px 2px #fff !important;
+  color: #000 !important;
+}
+
+/* Simple button sizes */
+.sbutton.ssimple.ssmall          { padding: 4px 7px 5px; font-size: small !important; }
+.sbutton.ssimple.ssmall:active   { padding: 5px 7px 4px; }
+.sbutton.ssimple                    { 
+  font-size: 1em !important;
+  font-weight: bold !important; }
+.sbutton.ssimple:active             { padding: 6px 10px 4px; }
+.sbutton.ssimple.smedium         { font-size: 1em !important; }
+.sbutton.ssimple.smedium:active  { padding: 6px 10px 4px; }
+.sbutton.ssimple.slarge          { padding: 6px 10px 6px; font-size: 1.1em !important; }
+.sbutton.ssimple.slarge:active   { padding: 6px 10px 6px; }
+.sbutton.ssimple.sxl             { padding: 8px 14px 8px; font-size: 16px !important; }
+.sbutton.ssimple.sxl:active      { padding: 9px 14px 7px; }
+.sbutton.ssimple.sxxl            { padding: 8px 14px 8px; font-size: 20px !important; }
+.sbutton.ssimple.sxxl:active     { padding: 9px 14px 7px; }
+.sbutton.ssimple.sxxxl           { padding: 8px 14px 8px; font-size: 26px !important; }
+.sbutton.ssimple.sxxxl:active    { padding: 9px 14px 7px; }
+
+.sbutton.ssimple.ssmall[disabled]:active,
+.sbutton.ssimple.ssmall.disabled:active   	{ padding: 4px 7px 5px; }
+.sbutton.ssimple[disabled]:active,
+.sbutton.ssimple.disabled:active 	            { padding: 5px 10px 5px; }
+.sbutton.ssimple.smedium[disabled]:active,
+.sbutton.ssimple.smedium.disabled:active 		{ padding: 6px 10px 4px; }
+.sbutton.ssimple.slarge[disabled]:active,
+.sbutton.ssimple.slarge.disabled:active   	{ padding: 8px 14px 8px; }
+.sbutton.ssimple.sxl[disabled]:active,
+.sbutton.ssimple.sxl.disabled:active	      { padding: 8px 14px 8px; }
+.sbutton.ssimple.sxxl[disabled]:active,
+.sbutton.ssimple.sxxl.disabled:active 		   { padding: 8px 14px 8px; }
+.sbutton.ssimple.sxxxl[disabled]:active,
+.sbutton.ssimple.sxxxl.disabled:active    	{ padding: 8px 14px 8px; }
+
+
+/*
+ * Icon Definitions
+ */
+
+/* Silk Icons - http://www.famfamfam.com/lab/icons/silk/ */
+/* (Obviously not all Silk icons are defined here. Feel free to define any other icons that you may need.) */
+
+.sbutton span.ok				{ background-image: url(images/icons/silk/tick.png) !important; }
+.sbutton span.cancel			{ background-image: url(images/icons/silk/cross.png) !important; }
+.sbutton span.add				{ background-image: url(images/icons/silk/add.png) !important; }
+.sbutton span.delete			{ background-image: url(images/icons/silk/delete.png) !important; }
+.sbutton span.download		{ background-image: url(images/icons/silk/arrow_down.png) !important; }
+.sbutton span.download2		{ background-image: url(images/icons/silk/package_down.png) !important; }
+.sbutton span.upload			{ background-image: url(images/icons/silk/arrow_up.png) !important; }
+.sbutton span.search			{ background-image: url(images/icons/silk/magnifier.png) !important; }
+.sbutton span.find			{ background-image: url(images/icons/silk/find.png) !important; }
+.sbutton span.first			{ background-image: url(images/icons/silk/resultset_first.png) !important; }
+.sbutton span.prev			{ background-image: url(images/icons/silk/resultset_previous.png) !important; }
+.sbutton span.next			{ background-image: url(images/icons/silk/resultset_next.png) !important; }
+.sbutton span.last			{ background-image: url(images/icons/silk/resultset_last.png) !important; }
+.sbutton span.play			{ background-image: url(images/icons/silk/play_blue.png) !important; }
+.sbutton span.pause			{ background-image: url(images/icons/silk/pause_blue.png) !important; }
+.sbutton span.rewind			{ background-image: url(images/icons/silk/rewind_blue.png) !important; }
+.sbutton span.forward		{ background-image: url(images/icons/silk/forward_blue.png) !important; }
+.sbutton span.stop			{ background-image: url(images/icons/silk/stop_blue.png) !important; }
+.sbutton span.reload			{ background-image: url(images/icons/silk/reload.png) !important; }
+.sbutton span.sync			{ background-image: url(images/icons/silk/arrow_refresh.png) !important; }
+.sbutton span.save			{ background-image: url(images/icons/silk/disk.png) !important; }
+.sbutton span.email			{ background-image: url(images/icons/silk/email.png) !important; }
+.sbutton span.print			{ background-image: url(images/icons/silk/printer.png) !important; }
+.sbutton span.heart			{ background-image: url(images/icons/silk/heart.png) !important; }
+.sbutton span.like			{ background-image: url(images/icons/silk/thumb_up.png) !important; }
+.sbutton span.dislike		{ background-image: url(images/icons/silk/thumb_down.png) !important; }
+.sbutton span.accept			{ background-image: url(images/icons/silk/accept.png) !important; }
+.sbutton span.decline		{ background-image: url(images/icons/silk/decline.png) !important; }
+.sbutton span.help			{ background-image: url(images/icons/silk/help.png) !important; }
+.sbutton span.home			{ background-image: url(images/icons/silk/house.png) !important; }
+.sbutton span.info			{ background-image: url(images/icons/silk/information.png) !important; }
+.sbutton span.cut				{ background-image: url(images/icons/silk/cut.png) !important; }
+.sbutton span.copy			{ background-image: url(images/icons/silk/page_white_copy.png) !important; }
+.sbutton span.paste			{ background-image: url(images/icons/silk/paste_plain.png) !important; }
+.sbutton span.erase			{ background-image: url(images/icons/silk/erase.png) !important; }
+.sbutton span.undo			{ background-image: url(images/icons/silk/arrow_undo.png) !important; }
+.sbutton span.redo			{ background-image: url(images/icons/silk/arrow_redo.png) !important; }
+.sbutton span.edit			{ background-image: url(images/icons/silk/pencil.png) !important; }
+.sbutton span.calendar		{ background-image: url(images/icons/silk/date.png) !important; }
+.sbutton span.user			{ background-image: url(images/icons/silk/user.png) !important; }
+.sbutton span.settings		{ background-image: url(images/icons/silk/cog.png) !important; }
+.sbutton span.cart			{ background-image: url(images/icons/silk/cart.png) !important; }
+.sbutton span.wand			{ background-image: url(images/icons/silk/wand.png) !important; }
+.sbutton span.wrench			{ background-image: url(images/icons/silk/wrench.png) !important; }
